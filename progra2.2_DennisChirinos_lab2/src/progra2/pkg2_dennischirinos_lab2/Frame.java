@@ -15,7 +15,7 @@ import javax.swing.tree.*;
  * @author denni
  */
 public class Frame extends javax.swing.JFrame {
-    
+
     int count = 0;
     ArrayList<Ruso> listRusos = new ArrayList();
     ArrayList<Aleman> listAlemanes = new ArrayList();
@@ -34,15 +34,15 @@ public class Frame extends javax.swing.JFrame {
         listArmas.add(new Arma("AK-47", "Ruso", 27));
         listArmas.add(new Arma("Revolver Navant", "Ruso", 13));
         listArmas.add(new Arma("RPG-7", "Ruso", 57));
-        
+
         listArmas.add(new Arma("Ametralladora MG42", "Aleman", 32));
         listArmas.add(new Arma("Pistholas Walter P38", "Aleman", 11));
         listArmas.add(new Arma("MP-40", "Aleman", 25));
-        
+
         listArmas.add(new Arma("Disco Duro", "Alumno", 23));
         listArmas.add(new Arma("Control de wii", "Alumno", 47));
         listArmas.add(new Arma("Laptop", "Alumno", 76));
-        
+
         initComponents();
         CB_JD1_Armas.removeAllItems();
         jMenuItem2.setVisible(false);
@@ -153,6 +153,10 @@ public class Frame extends javax.swing.JFrame {
         Pop_arma1 = new javax.swing.JMenuItem();
         Pop_arma2 = new javax.swing.JMenuItem();
         Pop_arma3 = new javax.swing.JMenuItem();
+        SetEdad = new javax.swing.JMenuItem();
+        SetCasta = new javax.swing.JMenuItem();
+        SetRango = new javax.swing.JMenuItem();
+        SetCuenta = new javax.swing.JMenuItem();
         jLabel28 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
@@ -1043,6 +1047,33 @@ public class Frame extends javax.swing.JFrame {
 
         POP_UP.add(ChangeWeapon);
 
+        SetEdad.setText("Cambiar Edad");
+        SetEdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetEdadActionPerformed(evt);
+            }
+        });
+        POP_UP.add(SetEdad);
+
+        SetCasta.setText("Cambiar Casta");
+        SetCasta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetCastaActionPerformed(evt);
+            }
+        });
+        POP_UP.add(SetCasta);
+
+        SetRango.setText("Cambiar Rango");
+        POP_UP.add(SetRango);
+
+        SetCuenta.setText("Cambiar Numero de Cuenta");
+        SetCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetCuentaActionPerformed(evt);
+            }
+        });
+        POP_UP.add(SetCuenta);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel28.setText("Bienvenido a simulador de ejercitos");
@@ -1148,7 +1179,7 @@ public class Frame extends javax.swing.JFrame {
         int ID = count;
         this.count++;
         int Edad = Integer.parseInt(TF_JD1_Edad.getText());
-        TF_JD1_Res.setText((Edad*8)+"");
+        TF_JD1_Res.setText((Edad * 8) + "");
         int Rango = Integer.parseInt(TF_JD1_Rango.getText());
         int Resistencia = Integer.parseInt(TF_JD1_Res.getText());
         Arma ar = null;
@@ -1221,7 +1252,7 @@ public class Frame extends javax.swing.JFrame {
         String Apodo = TF_JD1_Alias1.getText();
         int Edad = Integer.parseInt(TF_JD1_Edad2.getText());
         int Cuenta = Integer.parseInt(TF_JD1_Cuenta.getText());
-        TF_JD1_Res.setText((Edad*8)+"");
+        TF_JD1_Res.setText((Edad * 8) + "");
         int Resistencia = Integer.parseInt(TF_JD1_Res.getText());
         Arma ar = null;
         switch (CB_JD1_Armas.getSelectedIndex()) {
@@ -1391,14 +1422,14 @@ public class Frame extends javax.swing.JFrame {
                         Army2.get(Army2.size() - 1).setResistencia(HP - ATK);
                         System.out.println(Army2.get(Army2.size() - 1).Resistencia + " Res");
                         TextArea.append(Army2.get(Army2.size() - 1).Resistencia + " Res\n");
-                        
+
                     } catch (Exception e2) {
                         System.out.println("Alemanes ya perdieron");
                         TextArea.append("Alemanes ya perdieron\n");
                     }
-                    
+
                 }
-                
+
             }
             //1 a 3
             for (int i = 0; i < Army1.size(); i++) {
@@ -1422,7 +1453,7 @@ public class Frame extends javax.swing.JFrame {
                         TextArea.append("Alumnos ya perdieron! \n");
                     }
                 }
-                
+
             }
 
             //Check 1
@@ -1469,7 +1500,7 @@ public class Frame extends javax.swing.JFrame {
                         TextArea.append("Alumnos ya perdieron! \n");
                     }
                 }
-                
+
             }
             //2 a 1
             for (int i = 0; i < Army2.size(); i++) {
@@ -1493,7 +1524,7 @@ public class Frame extends javax.swing.JFrame {
                         TextArea.append("Rusos ya perdieron! \n");
                     }
                 }
-                
+
             }
             //check 2
             for (int i = 0; i < Army1.size(); i++) {
@@ -1538,7 +1569,7 @@ public class Frame extends javax.swing.JFrame {
                         TextArea.append("Rusos ya perdieron! \n");
                     }
                 }
-                
+
             }
             //3 a 2
             for (int i = 0; i < Army3.size(); i++) {
@@ -1561,9 +1592,9 @@ public class Frame extends javax.swing.JFrame {
                         System.out.println("Alemanes ya perdieron");
                         TextArea.append("Alemanes ya perdieron \n");
                     }
-                    
+
                 }
-                
+
             }
             //check 3
             for (int i = 0; i < Army1.size(); i++) {
@@ -1733,6 +1764,9 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void TreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TreeMouseClicked
+        SetCasta.setVisible(false);
+        SetRango.setVisible(false);
+        SetCuenta.setVisible(false);
         if (evt.isMetaDown()) {
             DefaultMutableTreeNode nd_sel = (DefaultMutableTreeNode) Tree.getLastSelectedPathComponent();
             if (nd_sel.getUserObject() instanceof Ruso) {
@@ -1741,6 +1775,7 @@ public class Frame extends javax.swing.JFrame {
                 Pop_arma1.setText(listArmas.get(0).Tipo);
                 Pop_arma2.setText(listArmas.get(1).Tipo);
                 Pop_arma3.setText(listArmas.get(2).Tipo);
+                SetRango.setVisible(true);
                 POP_UP.show(Tree, evt.getX(), evt.getY());
             }
             if (nd_sel.getUserObject() instanceof Aleman) {
@@ -1749,6 +1784,7 @@ public class Frame extends javax.swing.JFrame {
                 Pop_arma1.setText(listArmas.get(3).Tipo);
                 Pop_arma2.setText(listArmas.get(4).Tipo);
                 Pop_arma3.setText(listArmas.get(5).Tipo);
+                SetCasta.setVisible(true);
                 POP_UP.show(Tree, evt.getX(), evt.getY());
             }
             if (nd_sel.getUserObject() instanceof Alumno) {
@@ -1757,6 +1793,7 @@ public class Frame extends javax.swing.JFrame {
                 Pop_arma1.setText(listArmas.get(6).Tipo);
                 Pop_arma2.setText(listArmas.get(7).Tipo);
                 Pop_arma3.setText(listArmas.get(8).Tipo);
+                SetCuenta.setVisible(true);
                 POP_UP.show(Tree, evt.getX(), evt.getY());
             }
         }
@@ -1945,6 +1982,67 @@ public class Frame extends javax.swing.JFrame {
         JD_Mostrar.setVisible(false);
     }//GEN-LAST:event_Pop_arma3ActionPerformed
 
+    private void SetEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetEdadActionPerformed
+        DefaultMutableTreeNode nd_sel;
+        DefaultMutableTreeNode nd_f;
+        int i;
+        switch (POPUP_OP) {
+            case 1:
+                nd_sel = (DefaultMutableTreeNode) Tree.getLastSelectedPathComponent();
+                nd_f = (DefaultMutableTreeNode) nd_sel.getParent();
+                i = nd_f.getIndex(nd_sel);
+                System.out.println(i);
+                Ruso r = (Ruso) nd_sel.getUserObject();
+                r.setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese Nueva Edad")));
+                listRusos.set(i, r);
+                break;
+            case 2:
+                nd_sel = (DefaultMutableTreeNode) Tree.getLastSelectedPathComponent();
+                nd_f = (DefaultMutableTreeNode) nd_sel.getParent();
+                i = nd_f.getIndex(nd_sel);
+                System.out.println(i);
+                Aleman aln = (Aleman) nd_sel.getUserObject();
+                JOptionPane.showMessageDialog(this, "No se le puede cambiar la edad");
+                listAlemanes.set(i, aln);
+                break;
+            case 3:
+                nd_sel = (DefaultMutableTreeNode) Tree.getLastSelectedPathComponent();
+                nd_f = (DefaultMutableTreeNode) nd_sel.getParent();
+                i = nd_f.getIndex(nd_sel);
+                System.out.println(i);
+                Alumno alm = (Alumno) nd_sel.getUserObject();
+                alm.setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese Nueva Edad")));
+                listAlumnos.set(i, alm);
+                break;
+        }
+        JD_Mostrar.setVisible(false);
+    }//GEN-LAST:event_SetEdadActionPerformed
+
+    private void SetCastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetCastaActionPerformed
+        DefaultMutableTreeNode nd_sel;
+        DefaultMutableTreeNode nd_f;
+        nd_sel = (DefaultMutableTreeNode) Tree.getLastSelectedPathComponent();
+        nd_f = (DefaultMutableTreeNode) nd_sel.getParent();
+        int i = nd_f.getIndex(nd_sel);
+        System.out.println(i);
+        Aleman aln = (Aleman) nd_sel.getUserObject();
+        aln.setCasta(JOptionPane.showInputDialog(this, "Ingrese nueva Casta"));
+        listAlemanes.set(i, aln);
+    }//GEN-LAST:event_SetCastaActionPerformed
+
+    private void SetCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetCuentaActionPerformed
+        DefaultMutableTreeNode nd_sel;
+        DefaultMutableTreeNode nd_f;
+        int i;
+        nd_sel = (DefaultMutableTreeNode) Tree.getLastSelectedPathComponent();
+                nd_f = (DefaultMutableTreeNode) nd_sel.getParent();
+                i = nd_f.getIndex(nd_sel);
+                System.out.println(i);
+                Alumno alm = (Alumno) nd_sel.getUserObject();
+                alm.setCuenta(Integer.parseInt(JOptionPane.showInputDialog("Ingrese Nueva Cuenta")));
+                listAlumnos.set(i, alm);
+    }//GEN-LAST:event_SetCuentaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1979,7 +2077,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void actualizar(int op) {
         CB_JD1_Armas.removeAllItems();
         switch (op) {
@@ -2006,7 +2104,7 @@ public class Frame extends javax.swing.JFrame {
                 break;
         }
     }
-    
+
     public void actualizar2(int op) {
         CB_JD2_Armas.removeAllItems();
         CB_JD2_Soldados.removeAllItems();
@@ -2043,7 +2141,7 @@ public class Frame extends javax.swing.JFrame {
                 break;
         }
     }
-    
+
     public void ataqueRuso() {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2071,7 +2169,11 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JRadioButton RB_JD2_Aleman;
     private javax.swing.JRadioButton RB_JD2_Alumno;
     private javax.swing.JRadioButton RB_JD2_Ruso;
+    private javax.swing.JMenuItem SetCasta;
+    private javax.swing.JMenuItem SetCuenta;
+    private javax.swing.JMenuItem SetEdad;
     private javax.swing.JMenuItem SetNombre;
+    private javax.swing.JMenuItem SetRango;
     private javax.swing.JMenuItem SetRes;
     private javax.swing.JTextField TF_JD1_Alias;
     private javax.swing.JTextField TF_JD1_Alias1;
